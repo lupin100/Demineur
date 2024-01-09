@@ -24,5 +24,7 @@ namespace Démineur
         {
             InitializeComponent();
         }
+        
+        
     }
 }

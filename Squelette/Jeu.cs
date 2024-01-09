@@ -85,7 +85,7 @@ public class Jeu
         return _tableauRevelees[x, y];
     }
 
-    public void SetVisited(int x, int y)
+    public void Revele(int x, int y)
     {
         _tableauRevelees[x, y] = true;
     }

@@ -23,6 +23,7 @@ namespace Démineur
         public MainWindow()
         {
             InitializeComponent();
+            GrilleXAML.Children.Add(new GrilleJeu(10,20));
         }
         
         

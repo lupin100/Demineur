@@ -44,31 +44,33 @@ public class Jeu
         jeuTourne = true;
     }
     
-    public int CalculeNombre(int x, int y)
+    public int CalculeNombre(int tuilex, int tuiley)
     {
-        int res = 0;
+        int count = 0;
         for (int i = -1; i <= 1; i++)
         {
-            if (x + i < 0 || y + i >= ligne)
-            {
-                continue;
-            }
-
             for (int j = -1; j <= 1; j++)
             {
-                if (y + j < 0 || y + j >= colonne)
+                if (i == 0 && j == 0)
                 {
                     continue;
                 }
-
-                if (_tableauMines[x + i, y + j])
+                
+                int x = tuilex + i;
+                int y = tuiley + j;
+                
+                
+                if (x >= 0 && x < ligne && y >= 0 && y < colonne)
                 {
-                    res++;
+                    if (_tableauMines[x, y])
+                    {
+                        count++;
+                    }
                 }
             }
         }
 
-        return res;
+        return count;
     }
     public bool EstUneBombe(int x, int y)
     {

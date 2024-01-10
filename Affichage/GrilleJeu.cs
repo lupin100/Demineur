@@ -57,7 +57,7 @@ public class GrilleJeu : Grid
         Initialisation(_partie.ligne, _partie.colonne);
     }
 
-    public void Cell_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+    public void Tuile_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
     {
         if (!_partie.jeuTourne)
         {
@@ -82,7 +82,7 @@ public class GrilleJeu : Grid
 
         
 
-    public void Cell_Click(object sender, RoutedEventArgs e)
+    public void Tuile_Click(object sender, RoutedEventArgs e)
     {
         if (!_partie.jeuTourne)
         {
@@ -170,7 +170,7 @@ public class GrilleJeu : Grid
 
     public void Invalidate(Tuile t)
     {
-        if (!(_partie.RecupDrapeau(t.x, t.y)))
+        if (_partie.RecupDrapeau(t.x, t.y))
         {
             t.Background = new SolidColorBrush(Colors.Orange);
             //t.Content = _drapeau;

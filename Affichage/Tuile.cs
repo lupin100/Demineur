@@ -13,7 +13,7 @@ public class Tuile : Button
     {
         x = _x;
         y = _y;
-        Click += grilleDeJeu.Cell_Click;
-        MouseRightButtonDown += grilleDeJeu.Cell_MouseRightButtonDown;
+        Click += grilleDeJeu.Tuile_Click;
+        MouseRightButtonDown += grilleDeJeu.Tuile_MouseRightButtonDown;
     }
 }

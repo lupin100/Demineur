@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace Démineur;
 
-public class Tuile : Button
+public class Tuile : Button //c'est un héritage en gros on crée la classe tuile qui hérite des méthodes de la classe button
 {
 
     public int x { get; }
@@ -13,7 +13,7 @@ public class Tuile : Button
     {
         x = _x;
         y = _y;
-        Click += grilleDeJeu.Tuile_Click;
-        MouseRightButtonDown += grilleDeJeu.Tuile_MouseRightButtonDown;
+        Click += grilleDeJeu.Tuile_Click_Gauche; //là on assigne les méthodes aux boutons créés
+        MouseRightButtonDown += grilleDeJeu.Tuile_Click_Droit;
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Démineur;
 
-public class Couleurs
+public class Couleurs //la classe ne sert qu'à accéder aux couleurs facilement
 {
     public static Color[] nbCouleur { get; } =
     {

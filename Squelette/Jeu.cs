@@ -8,7 +8,7 @@ public class Jeu
     public int ligne { get; }
     public int colonne { get; }
 
-    private bool[,] _tableauDrapeaux;
+    private bool[,] _tableauDrapeaux; //on crée 3 tableaux de booléens qui feront la taille de la grille pour localiser les cases marquées, révélées et qui sont des bombes
     private bool[,] _tableauMines;
     private bool[,] _tableauRevelees;
     private readonly int _nbBombe;
@@ -24,7 +24,7 @@ public class Jeu
         Rafraichissement();
     }
     
-    public void Rafraichissement()
+    public void Rafraichissement() //on calibre les tableaux pour qu'ils fassent la taille de la grille et on place les bombes aléatoirement en passant des booléens à true dans le tableau des bombes
     {
         _tableauDrapeaux = new bool[ligne, colonne];
         _tableauMines = new bool[ligne, colonne];
@@ -44,9 +44,9 @@ public class Jeu
         jeuTourne = true;
     }
     
-    public int CalculeNombre(int tuilex, int tuiley)
+    public int CalculeNombre(int tuilex, int tuiley) //on check les 8 coordonnées autour de la tuile donnée et si il y a une bombe on incrémente le compteur
     {
-        int count = 0;
+        int cpt = 0;
         for (int i = -1; i <= 1; i++)
         {
             for (int j = -1; j <= 1; j++)
@@ -64,35 +64,35 @@ public class Jeu
                 {
                     if (_tableauMines[x, y])
                     {
-                        count++;
+                        cpt++;
                     }
                 }
             }
         }
 
-        return count;
+        return cpt;
     }
-    public bool EstUneBombe(int x, int y)
+    public bool EstUneBombe(int x, int y) //si le booléen aux coordonnées x y dans le tableau de mines est à true alors il y a une bombe
     {
         return _tableauMines[x, y];
     }
 
-    public void Drapeau(int x, int y)
+    public void Drapeau(int x, int y) //on inverse la valeur du booléen (true ou false) vu qu'on peut mettre un drapeau ou l'enlever
     {
         _tableauDrapeaux[x, y] = !_tableauDrapeaux[x, y];
     }
 
-    public bool EstRevelee(int x, int y)
+    public bool EstRevelee(int x, int y) //même principe que pour estunebombe
     {
         return _tableauRevelees[x, y];
     }
 
-    public void Revele(int x, int y)
+    public void Revele(int x, int y) //même principe que pour drapeau sauf qu'on ne peut que révéler une case et pas la re masquer
     {
         _tableauRevelees[x, y] = true;
     }
 
-    public bool RecupDrapeau(int x, int y)
+    public bool RecupDrapeau(int x, int y) //meme principe que estunebombe
     {
         return _tableauDrapeaux[x, y];
     }

@@ -12,8 +12,8 @@ namespace Démineur;
 
 public class GrilleJeu : Grid
 {
-    private readonly int[] _tx = {-1, 0, 1, 0};
-    private readonly int[] _ty = {0, -1, 0, 1};    
+    private readonly int[] PARCOURS_HORIZONTAL = {-1, 0, 1, 0};
+    private readonly int[] PARCOURS_VERTICAL = {0, -1, 0, 1};    
     
     private Jeu _partie;
     BitmapImage _drapeau = new BitmapImage(new Uri($"/Images/flag.png", UriKind.Relative));
@@ -23,7 +23,7 @@ public class GrilleJeu : Grid
         Initialisation(ligne, colonne);
     }
 
-    private void Initialisation(int ligne, int colonne)
+    private void Initialisation(int ligne, int colonne) //initialisation crée des lignes et des colonnes dans la grid et les remplit de boutons puis rafraichit leur visuel
     {
         _partie = new Jeu(ligne, colonne, ligne * colonne / 6, this);
 
@@ -42,14 +42,14 @@ public class GrilleJeu : Grid
         {
             for (int j = 0; j < colonne; j++)
             {
-                var cell = new Tuile(i, j, this);
+                Tuile cell = new Tuile(i, j, this);
                 SetRow(cell, i);
                 SetColumn(cell, j);
                 Children.Add(cell);
             }
         }
 
-        Invalidate();
+        RafraichirVisuel();
     }
 
     private void Clear()
@@ -57,9 +57,9 @@ public class GrilleJeu : Grid
         Initialisation(_partie.ligne, _partie.colonne);
     }
 
-    public void Tuile_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+    public void Tuile_Click_Droit(object sender, MouseButtonEventArgs e)
     {
-        if (!_partie.jeuTourne)
+        if (!_partie.jeuTourne) //utile pour rendre le jeu inutilisable lors que l'écran de fin apparait par exemple
         {
             e.Handled = true;
             return;
@@ -74,7 +74,7 @@ public class GrilleJeu : Grid
             }
 
             _partie.Drapeau(t.x, t.y);
-            Invalidate(t);
+            RafraichirVisuel(t);
         }
 
         e.Handled = true;
@@ -82,13 +82,13 @@ public class GrilleJeu : Grid
 
         
 
-    public void Tuile_Click(object sender, RoutedEventArgs e)
+    public void Tuile_Click_Gauche(object sender, RoutedEventArgs e)
     {
-        if (!_partie.jeuTourne)
+        if (!_partie.jeuTourne) //utile pour rendre le jeu inutilisable lors que l'écran de fin apparait par exemple
         {
             e.Handled = true;
             return;
-        }
+        } 
 
         if (sender is Tuile tuile)
         {
@@ -99,7 +99,7 @@ public class GrilleJeu : Grid
                 
             if (_partie.EstUneBombe(tuile.x, tuile.y))
             {
-                Clear(); //pour test nouveau départ
+                Clear(); //enlever cette ligne si on veut pas un instant reset quand on perd
                 e.Handled = true;
                 return;
             }
@@ -107,29 +107,29 @@ public class GrilleJeu : Grid
             _partie.Revele(tuile.x, tuile.y);
             if (_partie.CalculeNombre(tuile.x, tuile.y) == 0)
             {
-                Bfs(tuile);
+                ReveleEnChaine(tuile);
 
-                Invalidate();
+                RafraichirVisuel();
             }
             else
             {
-                Invalidate(tuile);
+                RafraichirVisuel(tuile);
             }
         }
 
         e.Handled = true;
     }
 
-    private void Bfs(Tuile tuile)
+    private void ReveleEnChaine(Tuile tuile) //ReveleEnChaine utilise l'algorithme du parcours en largeur (Breadth-first search en anglais)
     {
-        var q = new Queue();
-        q.Enqueue(new KeyValuePair<int, int>(tuile.x, tuile.y));
+        Queue q = new Queue();
+        q.Enqueue(new KeyValuePair<int, int>(tuile.x, tuile.y)); //KeyValuePair sert simplement à stocker deux int dans une seule entité (ici c'est pour les coordonnées des tuiles à checker
 
         while (q.Count != 0)
         {
-            var t = (KeyValuePair<int, int>) q.Dequeue();
+            KeyValuePair<int, int> t = (KeyValuePair<int, int>) q.Dequeue();
 
-            foreach (var i in _tx)
+            foreach (int i in PARCOURS_HORIZONTAL)
             {
                 int r = t.Key + i;
                 if (r < 0 || r >= _partie.ligne)
@@ -137,7 +137,7 @@ public class GrilleJeu : Grid
                     continue;
                 }
 
-                foreach (var j in _ty)
+                foreach (int j in PARCOURS_VERTICAL)
                 {
                     int c = t.Value + j;
 
@@ -158,24 +158,24 @@ public class GrilleJeu : Grid
         }
     }
 
-    public void Invalidate()
+    public void RafraichirVisuel() //surcharge de RafraichirVisuel pour l'appliquer à toutes les tuiles de la grille
     {
-        foreach (UIElement uiElement in Children)
+        foreach (Tuile tuile in Children)
         {
-            if (uiElement is Tuile t) Invalidate(t);
+            RafraichirVisuel(tuile);
         }
     }
 
     public int FontSize { get; } = 20;
 
-    public void Invalidate(Tuile t)
+    public void RafraichirVisuel(Tuile t)
     {
-        if (_partie.RecupDrapeau(t.x, t.y))
+        if (_partie.RecupDrapeau(t.x, t.y)) //si c'est un drapeau la case devient orange
         {
             t.Background = new SolidColorBrush(Colors.Orange);
             //t.Content = _drapeau;
         }
-        else if (_partie.EstRevelee(t.x, t.y))
+        else if (_partie.EstRevelee(t.x, t.y)) //si on a cliqué sur la tuile ou qu'elle a été révélée par ReveleEnChaine on calcule les bombes autour
         {
             int nb = _partie.CalculeNombre(t.x, t.y);
             t.Content = nb == 0 ? "" : nb.ToString();
@@ -184,7 +184,7 @@ public class GrilleJeu : Grid
             t.FontSize = FontSize;
             t.BorderThickness = new Thickness(2);
         }
-        else
+        else //si elle est inchangée la case est bleue
         {
             t.Background = new SolidColorBrush(Colors.CornflowerBlue);
             t.BorderThickness = new Thickness(1);

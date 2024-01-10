@@ -15,15 +15,12 @@ using System.Windows.Shapes;
 
 namespace Démineur
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            GrilleXAML.Children.Add(new GrilleJeu(10,20));
+            GrilleXAML.Children.Add(new GrilleJeu(10,20)); //on crée une grille de jeu dans la grille de la mainwindow
         }
         
         

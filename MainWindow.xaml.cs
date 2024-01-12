@@ -23,6 +23,10 @@ namespace Démineur
         public MainWindow()
         {
             InitializeComponent();
+            Menu menu = new Menu();
+            menu.ShowDialog();
+            if (menu.DialogResult == false)
+                Application.Current.Shutdown();
         }
     }
 }

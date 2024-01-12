@@ -20,6 +20,10 @@ namespace Démineur
         public MainWindow()
         {
             InitializeComponent();
+            Menu menu = new Menu();
+            menu.ShowDialog();
+            if (menu.DialogResult == false)
+                Application.Current.Shutdown();
             GrilleXAML.Children.Add(new GrilleJeu(10,20)); //on crée une grille de jeu dans la grille de la mainwindow
         }
         

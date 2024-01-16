@@ -29,7 +29,7 @@ namespace Démineur
             if (Menu.difficulte == "moyen") ;
                 GrilleXAML.Children.Add(new GrilleJeu(16, 16)); //on crée une grille de jeu dans la grille de la mainwindow
             if (Menu.difficulte == "difficile") ;
-                GrilleXAML.Children.Add(new GrilleJeu(8, 8)); //on crée une grille de jeu dans la grille de la mainwindow
+                GrilleXAML.Children.Add(new GrilleJeu(16, 32)); //on crée une grille de jeu dans la grille de la mainwindow
         }
         
         

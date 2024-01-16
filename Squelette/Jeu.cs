@@ -12,9 +12,9 @@ public class Jeu
     private bool[,] _tableauMines;
     private bool[,] _tableauRevelees;
     private readonly int _nbBombe;
-    private readonly Random _random = new Random();
+    public readonly Random _random = new Random();
 
-    public bool jeuTourne { get; private set; }
+    public bool jeuTourne { get; set; }
 
     public Jeu(int _ligne, int _colonne, int nbBombe, GrilleJeu grille)
     {
@@ -32,11 +32,11 @@ public class Jeu
         int cpt = 0;
         while (cpt < _nbBombe)
         {
-            int r = _random.Next(ligne);
-            int c = _random.Next(colonne);
-            if (!_tableauMines[r, c])
+            int x = _random.Next(ligne);
+            int y = _random.Next(colonne);
+            if (!_tableauMines[x, y])
             {            
-                    _tableauMines[r, c] = true;
+                    _tableauMines[x, y] = true;
                     cpt++;
             }
         }
@@ -95,5 +95,49 @@ public class Jeu
     public bool RecupDrapeau(int x, int y) //meme principe que estunebombe
     {
         return _tableauDrapeaux[x, y];
+    }
+    
+    public void SafeZone(int tuilex, int tuiley)
+    {
+        for (int i = -1; i < 2; i++)
+        {
+            for (int j = -1; j < 2; j++)
+            {
+                int x = tuilex + i;
+                int y = tuiley + j;
+
+
+                if (x >= 0 && x < ligne && y >= 0 && y < colonne)
+                {
+                    if (EstUneBombe(x, y))
+                    {
+                        _tableauMines[x, y] = false;
+                        int minex = _random.Next(ligne);
+                        int miney = _random.Next(colonne);
+                        while (_tableauMines[minex,miney] || (minex > tuilex-1 && minex < tuilex+1) || (miney > tuiley-1 && miney < tuiley+1))
+                        {
+                            minex = _random.Next(ligne);
+                            miney = _random.Next(colonne);
+                        }
+                        _tableauMines[minex, miney] = true;
+                    }
+                }
+            }
+        }
+    }
+
+    public bool Fin()
+    {
+        for (int i = 0; i < ligne; i++)
+        {
+            for (int j = 0; j < colonne; j++)
+            {
+                if (!EstUneBombe(i,j) && !EstRevelee(i,j))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

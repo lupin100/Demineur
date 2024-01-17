@@ -41,19 +41,15 @@ namespace Démineur
             difficulte = "facile";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            difficulte = "moyen";
-        }
 
         private void difficile_Click(object sender, RoutedEventArgs e)
         {
             difficulte = "difficile";
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void moyen_Click(object sender, RoutedEventArgs e)
         {
-            difficulte = "personnalisé";
+            difficulte = "moyen";
         }
     }
 }

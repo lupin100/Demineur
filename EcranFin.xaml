@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Démineur"
         mc:Ignorable="d"
-        Title="EcranFin" Height="450" Width="800">
+        Title="EcranFin" Height="700" Width="300" Background="Black">
     <Grid>
-        
+        <Label x:Name="titre_fin" Content="Gagné" HorizontalAlignment="Center" Height="112" VerticalAlignment="Top" Width="300" Foreground="#FFB15C5C" FontSize="48"/>
+
     </Grid>
 </Window>

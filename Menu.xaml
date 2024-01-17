@@ -82,21 +82,9 @@
             FontSize="18"
             Foreground="#FFCFFF04" />
         <Button
-            x:Name="difficile"
             Width="110"
             Height="50"
-            Margin="618,160,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="Black"
-            BorderBrush="#FF00FFED"
-            Content="Personnalisé"
-            FontSize="18"
-            Foreground="#FF00FFED" Click="Button_Click_2" />
-        <Button
-            Width="110"
-            Height="50"
-            Margin="436,160,0,0"
+            Margin="572.5,200,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Black"

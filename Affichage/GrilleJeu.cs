@@ -170,9 +170,12 @@ public class GrilleJeu : Grid
 
     public void RafraichirVisuel(Tuile t)
     {
-        if (_partie.RecupDrapeau(t.x, t.y)) //si c'est un drapeau la case devient orange
+        if (_partie.RecupDrapeau(t.x, t.y)) //si c'est un drapeau la case affiche un drapeau
         {
-            t.Background = new SolidColorBrush(Colors.Orange);
+            ImageBrush back = new ImageBrush();
+            back.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/flag.png"));
+            t.Background = back; 
+
             //t.Content = _drapeau;
         }
         else if (_partie.EstRevelee(t.x, t.y)) //si on a cliqué sur la tuile ou qu'elle a été révélée par ReveleEnChaine on calcule les bombes autour

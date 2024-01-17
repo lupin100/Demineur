@@ -12,7 +12,7 @@
     mc:Ignorable="d">
     <Grid>
         <Label
-            Margin="0,103,0,0"
+            Margin="0,150,0,0"
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Background="Black"
@@ -56,50 +56,44 @@
             FontSize="18"
             Foreground="#FF2DEB12" />
         <Button
+            x:Name="moyen"
             Width="110"
             Height="50"
-            Margin="254,160,0,0"
+            Margin="345,200,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Black"
             BorderBrush="#ff8300"
+            Click="moyen_Click"
             Content="Moyen"
             FontSize="18"
-            Foreground="#ff8300" Click="Button_Click" />
+            Foreground="#ff8300" />
         <Button
             x:Name="facile"
             Width="110"
             Height="50"
-            Margin="72,160,0,0"
+            Margin="117.5,200,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Black"
             BorderBrush="#FFCFFF04"
+            Click="facile_Click"
             Content="Facile"
             FontSize="18"
-            Foreground="#FFCFFF04" Click="facile_Click" />
+            Foreground="#FFCFFF04" />
         <Button
+            x:Name="difficile"
             Width="110"
             Height="50"
-            Margin="618,160,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Background="Black"
-            BorderBrush="#FF00FFED"
-            Content="Personnalisé"
-            FontSize="18"
-            Foreground="#FF00FFED" Click="Button_Click_2" />
-        <Button
-            Width="110"
-            Height="50"
-            Margin="436,160,0,0"
+            Margin="572.5,200,0,0"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Background="Black"
             BorderBrush="Red"
+            Click="difficile_Click"
             Content="Difficile"
             FontSize="18"
-            Foreground="Red" Click="Button_Click_1" />
+            Foreground="Red" />
 
     </Grid>
 </Window>

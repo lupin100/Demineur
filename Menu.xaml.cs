@@ -34,26 +34,21 @@ namespace Démineur
             this.DialogResult = true;
         }
 
-        public string difficulte;
+        public static string difficulte ="facile";
 
         private void facile_Click(object sender, RoutedEventArgs e)
         {
             difficulte = "facile";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void moyen_Click(object sender, RoutedEventArgs e)
         {
             difficulte = "moyen";
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void difficile_Click(object sender, RoutedEventArgs e)
         {
             difficulte = "difficile";
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            difficulte = "personnalisé";
         }
     }
 }

@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="EcranFin" Height="700" Width="300" Background="Black">
     <Grid>
-        <Label x:Name="titre_fin" Content="Gagné" HorizontalAlignment="Center" Height="112" VerticalAlignment="Top" Width="300" Foreground="#FF2DEB12" FontSize="48" FontWeight="Bold"/>
+        <Label x:Name="titre_fin" Content="Gagné" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="112" VerticalAlignment="Top" Width="300" Foreground="#FF2DEB12" FontSize="48" FontWeight="Bold" />
+        <Label x:Name="teste_fin" Content="Bravo vous avez réussi  votre mission" VerticalContentAlignment="Center"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="112" Margin="0,112,0,0" VerticalAlignment="Top" Width="300" Foreground="#FF2DEB12" FontSize="24"/>
 
     </Grid>
 </Window>

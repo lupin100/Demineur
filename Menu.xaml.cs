@@ -34,7 +34,7 @@ namespace Démineur
             this.DialogResult = true;
         }
 
-        public string difficulte;
+        public static string difficulte;
 
         private void facile_Click(object sender, RoutedEventArgs e)
         {

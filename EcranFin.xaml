@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="EcranFin" Height="700" Width="300" Background="Black">
     <Grid>
-        <Label x:Name="titre_fin" Content="Gagné" HorizontalAlignment="Center" Height="112" VerticalAlignment="Top" Width="300" Foreground="#FFB15C5C" FontSize="48"/>
+        <Label x:Name="titre_fin" Content="Gagné" HorizontalAlignment="Center" Height="112" VerticalAlignment="Top" Width="300" Foreground="#FF2DEB12" FontSize="48" FontWeight="Bold"/>
 
     </Grid>
 </Window>

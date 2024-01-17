@@ -23,5 +23,15 @@ namespace Démineur
         {
             InitializeComponent();
         }
+
+        private void Termine_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+        }
+
+        private void Recommencer_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+        }
     }
 }

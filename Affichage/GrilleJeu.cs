@@ -16,7 +16,7 @@ public class GrilleJeu : Grid
     private readonly int[] PARCOURS_VERTICAL = {0, -1, 0, 1};    
     
     private Jeu _partie;
-    BitmapImage _drapeau = new BitmapImage(new Uri($"/Images/flag.png", UriKind.Relative));
+
 
     public GrilleJeu(int ligne, int colonne)
     {
@@ -172,9 +172,9 @@ public class GrilleJeu : Grid
     {
         if (_partie.RecupDrapeau(t.x, t.y)) //si c'est un drapeau la case affiche un drapeau
         {
-            ImageBrush back = new ImageBrush();
-            back.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/flag.png"));
-            t.Background = back; 
+            ImageBrush drapeau = new ImageBrush();
+            drapeau.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/flag.png"));
+            t.Background = drapeau; 
 
             //t.Content = _drapeau;
         }

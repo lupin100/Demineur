@@ -99,9 +99,9 @@ public class Jeu
     
     public void SafeZone(int tuilex, int tuiley)
     {
-        for (int i = -1; i < 2; i++)
+        for (int i = -1; i <= 1; i++)
         {
-            for (int j = -1; j < 2; j++)
+            for (int j = -1; j <= 1; j++)
             {
                 int x = tuilex + i;
                 int y = tuiley + j;

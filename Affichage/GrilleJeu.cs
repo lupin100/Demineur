@@ -13,9 +13,6 @@ namespace Démineur;
 
 public class GrilleJeu : Grid
 {
-    private readonly int[] PARCOURS_HORIZONTAL = {-1, 0, 1, 0};
-    private readonly int[] PARCOURS_VERTICAL = {0, -1, 0, 1};    
-    
     private Jeu _partie;
     BitmapImage _drapeau = new BitmapImage(new Uri($"/Images/flag.png", UriKind.Relative));
     bool premier_clic = true;
@@ -144,7 +141,7 @@ public class GrilleJeu : Grid
         {
             KeyValuePair<int, int> t = (KeyValuePair<int, int>) q.Dequeue();
 
-            foreach (int i in PARCOURS_HORIZONTAL)
+            for (int i = -1; i <= 1; i++)
             {
                 int r = t.Key + i;
                 if (r < 0 || r >= _partie.ligne)
@@ -152,7 +149,7 @@ public class GrilleJeu : Grid
                     continue;
                 }
 
-                foreach (int j in PARCOURS_VERTICAL)
+                for (int j = -1; j <= 1; j++)
                 {
                     int c = t.Value + j;
 

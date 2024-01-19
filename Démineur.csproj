@@ -9,9 +9,16 @@
 
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="Musiques\" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Images\bomberetro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Images\drapeaudemineur.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Images\flag.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

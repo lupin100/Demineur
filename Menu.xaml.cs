@@ -35,7 +35,8 @@ namespace Démineur
             jouer.BorderBrush = new SolidColorBrush(Themes.CouleurJouerMenu);
             annuler.Foreground = new SolidColorBrush(Themes.CouleurAnnulerMenu);
             annuler.BorderBrush = new SolidColorBrush(Themes.CouleurAnnulerMenu);
-
+            imagedroite.Fill = Themes.ImageDroite;
+            imagegauche.Fill = Themes.ImageGauche;
         }
 
         private void annuler_Click(object sender, RoutedEventArgs e)

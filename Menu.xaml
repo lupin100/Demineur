@@ -93,6 +93,8 @@
             Content="Difficile"
             FontSize="18"
             Foreground="Red" />
+        <Rectangle x:Name="imagedroite" HorizontalAlignment="Left" Height="150" Margin="575,17,0,0" VerticalAlignment="Top" Width="150" Fill="Black"/>
+        <Rectangle x:Name="imagegauche" HorizontalAlignment="Left" Height="150" Margin="75,25,0,0" VerticalAlignment="Top" Width="150"/>
 
     </Grid>
 </Window>

@@ -31,6 +31,8 @@ namespace Démineur
         public static Color CouleurDifficileMenu = new Color();
         public static Color CouleurAnnulerMenu = new Color();
         public static Color CouleurJouerMenu = new Color();
+        public static ImageBrush ImageDroite = new ImageBrush();
+        public static ImageBrush ImageGauche = new ImageBrush();
 
 
         public static Color CouleurArrierePlanGrille = new Color();
@@ -63,11 +65,13 @@ namespace Démineur
             CouleurDifficileMenu = Colors.DarkRed;
             CouleurJouerMenu = Colors.Black;
             CouleurAnnulerMenu = Colors.Black;
+            ImageDroite.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/drapeaudemineur.png"));
+            ImageGauche.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/bomberetro.png"));
 
             //Changement de style de la grille
             CouleurArrierePlanGrille = Colors.LightGray;
             CouleurTuileGrille= Colors.LightGray;
-            drapeau.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/flag.png"));
+            drapeau.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/drapeaudemineur.png"));
 
             //changement de style du menu final
             CouleurFondFin = Colors.LightGray;

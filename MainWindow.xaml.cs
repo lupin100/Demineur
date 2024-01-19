@@ -21,7 +21,7 @@ namespace Démineur
         {
             InitializeComponent();
 
-            Theme theme = new Theme ();
+            Themes theme = new Themes ();
             theme.ShowDialog();
 
             Menu menu = new Menu();

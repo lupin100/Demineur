@@ -172,7 +172,7 @@ public class GrilleJeu : Grid
     {
         if (_partie.RecupDrapeau(t.x, t.y)) //si c'est un drapeau la case affiche un drapeau
         {
-            t.Background = Theme.drapeau; 
+            t.Background = Themes.drapeau; 
 
             //t.Content = _drapeau;
         }
@@ -181,7 +181,7 @@ public class GrilleJeu : Grid
             int nb = _partie.CalculeNombre(t.x, t.y);
             t.Content = nb == 0 ? "" : nb.ToString();
             t.Foreground = new SolidColorBrush(Couleurs.nbCouleur[nb]);
-            t.Background = new SolidColorBrush(Theme.CouleurArrierePlan);
+            t.Background = new SolidColorBrush(Themes.CouleurArrierePlan);
             t.FontSize = FontSize;
             t.BorderThickness = new Thickness(2);
         }

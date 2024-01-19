@@ -10,20 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Démineur
 {
     /// <summary>
-    /// Logique d'interaction pour Theme.xaml
+    /// Logique d'interaction pour Themes.xaml
     /// </summary>
-    public partial class Theme : Page
+    public partial class Themes : Window
     {
-        public Theme()
+        public Themes()
         {
             InitializeComponent();
         }
+
         public static Color CouleurArrierePlan = new Color();
         public static ImageBrush drapeau = new ImageBrush();
 
@@ -35,7 +35,7 @@ namespace Démineur
 
         private void retro_Click(object sender, RoutedEventArgs e)
         {
-            CouleurArrierePlan = Colors.Gray;
+            CouleurArrierePlan = Colors.LightGray;
             drapeau.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/flag.png"));
         }
 
@@ -58,5 +58,6 @@ namespace Démineur
         {
             this.DialogResult = true;
         }
+
     }
 }

@@ -174,21 +174,21 @@ public class GrilleJeu : Grid
         {
             t.Background = Themes.drapeau; 
 
-            //t.Content = _drapeau;
+  
         }
         else if (_partie.EstRevelee(t.x, t.y)) //si on a cliqué sur la tuile ou qu'elle a été révélée par ReveleEnChaine on calcule les bombes autour
         {
             int nb = _partie.CalculeNombre(t.x, t.y);
             t.Content = nb == 0 ? "" : nb.ToString();
             t.Foreground = new SolidColorBrush(Couleurs.nbCouleur[nb]);
-            t.Background = new SolidColorBrush(Themes.CouleurArrierePlan);
+            t.Background = new SolidColorBrush(Themes.CouleurArrierePlanGrille);
             t.FontSize = FontSize;
-            t.BorderThickness = new Thickness(2);
+            t.BorderThickness = new Thickness(1);
         }
         else //si elle est inchangée la case est bleue
         {
-            t.Background = new SolidColorBrush(Colors.CornflowerBlue);
-            t.BorderThickness = new Thickness(1);
+            t.Background = new SolidColorBrush(Themes.CouleurTuileGrille);
+            t.BorderThickness = new Thickness(2);
             t.Content = "";
         }
     }

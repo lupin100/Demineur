@@ -22,14 +22,23 @@ namespace Démineur
         public EcranFin()
         {
             InitializeComponent();
+            titrefin.Background = new SolidColorBrush(Themes.CouleurTitreFin);
+            fondfin.Background = new SolidColorBrush(Themes.CouleurFondFin);
+            textefin.Background = new SolidColorBrush(Themes.CouleurTexteFin);
+            termine.Background = new SolidColorBrush(Themes.CouleurTermine);
+            termine.Foreground = new SolidColorBrush(Themes.CouleurTermine);
+            recommencer.Background = new SolidColorBrush(Themes.CouleurRecommencer);
+            recommencer.Foreground = new SolidColorBrush(Themes.CouleurRecommencer);
+
+
         }
 
-        private void Termine_Click(object sender, RoutedEventArgs e)
+        private void termine_Click_1(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
         }
 
-        private void Recommencer_Click(object sender, RoutedEventArgs e)
+        private void recommencer_Click_1(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
         }

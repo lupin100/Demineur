@@ -22,8 +22,22 @@ namespace Démineur
         public Menu()
         {
             InitializeComponent();
+            menufond.Background = new SolidColorBrush (Themes.CouleurFondMenu);
+            titremenu.Foreground = new SolidColorBrush(Themes.CouleurTitreMenu);
+            textemenu.Foreground = new SolidColorBrush(Themes.CouleurTexteMenu);
+            facile.Foreground = new SolidColorBrush(Themes.CouleurFacileMenu);
+            facile.BorderBrush = new SolidColorBrush(Themes.CouleurFacileMenu);
+            moyen.Foreground = new SolidColorBrush(Themes.CouleurMoyenMenu);
+            moyen.BorderBrush = new SolidColorBrush(Themes.CouleurMoyenMenu);
+            difficile.Foreground = new SolidColorBrush(Themes.CouleurDifficileMenu);
+            difficile.BorderBrush = new SolidColorBrush(Themes.CouleurDifficileMenu);
+            jouer.Foreground = new SolidColorBrush(Themes.CouleurJouerMenu);
+            jouer.BorderBrush = new SolidColorBrush(Themes.CouleurJouerMenu);
+            annuler.Foreground = new SolidColorBrush(Themes.CouleurAnnulerMenu);
+            annuler.BorderBrush = new SolidColorBrush(Themes.CouleurAnnulerMenu);
+
         }
-        
+
         private void annuler_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
@@ -34,7 +48,7 @@ namespace Démineur
             this.DialogResult = true;
         }
 
-        public static string difficulte;
+        public static string difficulte = "facile";
 
         private void facile_Click(object sender, RoutedEventArgs e)
         {

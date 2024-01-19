@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:Démineur"
         mc:Ignorable="d"
         Title="EcranFin" Height="700" Width="300" Background="Black">
-    <Grid>
-        <Label x:Name="titre_fin" Content="Gagné" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="112" VerticalAlignment="Top" Width="300" Foreground="#FF2DEB12" FontSize="48" FontWeight="Bold" />
-        <Label x:Name="teste_fin" Content="Bravo vous avez réussi  votre mission" VerticalContentAlignment="Center"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="112" Margin="0,112,0,0" VerticalAlignment="Top" Width="300" Foreground="#FF2DEB12" FontSize="24"/>
-        <Button x:Name="Termine" Content="Terminé" HorizontalAlignment="Left" Height="50" Margin="16.6,624,0,0" VerticalAlignment="Top" Width="125" Background="#00DDDDDD" Foreground="#FF2DEB12" FontSize="18" Click="Termine_Click"/>
-        <Button x:Name="Recommencer" Content="Recommencer" HorizontalAlignment="Left" Height="50" Margin="158.2,624,0,0" VerticalAlignment="Top" Width="125" Background="#00DDDDDD" Foreground="#FF2DEB12" FontSize="18" Click="Recommencer_Click"/>
+    <Grid x:Name="fondfin">
+        <Label x:Name="titrefin" Content="Gagné" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="112" VerticalAlignment="Top" Width="300" Foreground="#FF2DEB12" FontSize="48" FontWeight="Bold" />
+        <Label x:Name="textefin" Content="Bravo vous avez réussi  votre mission" VerticalContentAlignment="Center"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="112" Margin="0,112,0,0" VerticalAlignment="Top" Width="300" Foreground="#FF2DEB12" FontSize="24"/>
+        <Button x:Name="termine" Content="Terminé" HorizontalAlignment="Left" Height="50" Margin="16.6,624,0,0" VerticalAlignment="Top" Width="125" Background="#00DDDDDD" Foreground="#FF2DEB12" FontSize="18" Click="termine_Click_1"/>
+        <Button x:Name="recommencer" Content="Recommencer" HorizontalAlignment="Left" Height="50" Margin="158.2,624,0,0" VerticalAlignment="Top" Width="125" Background="#00DDDDDD" Foreground="#FF2DEB12" FontSize="18" Click="recommencer_Click_1"/>
 
     </Grid>
 </Window>

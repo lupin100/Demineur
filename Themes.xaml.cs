@@ -45,9 +45,7 @@ namespace Démineur
         public static Color CouleurTermine = new Color();
         public static Color CouleurRecommencer = new Color();
 
-
-
-
+        //https://sebastien.warin.fr/2006/10/21/68-wpf-mediaelement/
 
         private void far_west_Click(object sender, RoutedEventArgs e)
         {

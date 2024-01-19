@@ -16,6 +16,7 @@ public class GrilleJeu : Grid
     private Jeu _partie;
     BitmapImage _drapeau = new BitmapImage(new Uri($"/Images/flag.png", UriKind.Relative));
     bool premier_clic = true;
+    bool gagner;
 
     public GrilleJeu(int ligne, int colonne)
     {
@@ -105,7 +106,9 @@ public class GrilleJeu : Grid
                 
             if (_partie.EstUneBombe(tuile.x, tuile.y))
             {
-                Clear(); //enlever cette ligne si on veut pas un instant reset quand on perd
+                gagner = false;
+                EcranFin ecranFin = new EcranFin();
+                ecranFin.ShowDialog();
                 e.Handled = true;
                 return;
             }
@@ -124,8 +127,11 @@ public class GrilleJeu : Grid
 
             if (_partie.Fin())
             {
+                gagner = true;
                 EcranFin ecranFin = new EcranFin();
                 ecranFin.ShowDialog();
+                e.Handled = true;
+                return;
             }
         }
 

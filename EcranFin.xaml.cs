@@ -22,12 +22,12 @@ namespace Démineur
         public EcranFin()
         {
             InitializeComponent();
-            titrefin.Background = new SolidColorBrush(Themes.CouleurTitreFin);
+            titrefin.Foreground = new SolidColorBrush(Themes.CouleurTitreFin);
             fondfin.Background = new SolidColorBrush(Themes.CouleurFondFin);
-            textefin.Background = new SolidColorBrush(Themes.CouleurTexteFin);
-            termine.Background = new SolidColorBrush(Themes.CouleurTermine);
+            textefin.Foreground = new SolidColorBrush(Themes.CouleurTexteFin);
+            termine.BorderBrush = new SolidColorBrush(Themes.CouleurTermine);
             termine.Foreground = new SolidColorBrush(Themes.CouleurTermine);
-            recommencer.Background = new SolidColorBrush(Themes.CouleurRecommencer);
+            recommencer.BorderBrush = new SolidColorBrush(Themes.CouleurRecommencer);
             recommencer.Foreground = new SolidColorBrush(Themes.CouleurRecommencer);
 
 

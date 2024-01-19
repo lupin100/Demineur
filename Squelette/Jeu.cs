@@ -5,26 +5,25 @@ namespace Démineur;
 
 public class Jeu
 {
-    public int ligne { get; }
-    public int colonne { get; }
+    public int ligne;
+    public int colonne;
 
     private bool[,] _tableauDrapeaux; //on crée 3 tableaux de booléens qui feront la taille de la grille pour localiser les cases marquées, révélées et qui sont des bombes
     private bool[,] _tableauMines;
     private bool[,] _tableauRevelees;
     private readonly int _nbBombe;
     public readonly Random _random = new Random();
-
-    public bool jeuTourne { get; set; }
+    public bool jeuTourne;
 
     public Jeu(int _ligne, int _colonne, int nbBombe, GrilleJeu grille)
     {
         ligne = _ligne;
         colonne = _colonne;
         _nbBombe = nbBombe;
-        Rafraichissement();
+        Initialisation();
     }
     
-    public void Rafraichissement() //on calibre les tableaux pour qu'ils fassent la taille de la grille et on place les bombes aléatoirement en passant des booléens à true dans le tableau des bombes
+    public void Initialisation() //on calibre les tableaux pour qu'ils fassent la taille de la grille et on place les bombes aléatoirement en passant des booléens à true dans le tableau des bombes
     {
         _tableauDrapeaux = new bool[ligne, colonne];
         _tableauMines = new bool[ligne, colonne];
@@ -34,11 +33,21 @@ public class Jeu
         {
             int x = _random.Next(ligne);
             int y = _random.Next(colonne);
-            if (!_tableauMines[x, y])
-            {            
-                    _tableauMines[x, y] = true;
-                    cpt++;
+            while (_tableauMines[x, y])
+            {
+                x++;
+                if (x >= ligne)
+                {
+                    x = 0;
+                    y++;
+                    if (y >= colonne)
+                    {
+                        y = 0;
+                    }
+                }
             }
+            _tableauMines[x, y] = true;
+            cpt++;
         }
 
         jeuTourne = true;
@@ -116,8 +125,16 @@ public class Jeu
                         int miney = _random.Next(colonne);
                         while (_tableauMines[minex,miney] || (minex > tuilex-1 && minex < tuilex+1) || (miney > tuiley-1 && miney < tuiley+1))
                         {
-                            minex = _random.Next(ligne);
-                            miney = _random.Next(colonne);
+                            minex++;
+                            if (minex >= ligne)
+                            {
+                                minex = 0;
+                                miney++;
+                                if (miney >= colonne)
+                                {
+                                    miney = 0;
+                                }
+                            }
                         }
                         _tableauMines[minex, miney] = true;
                     }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Démineur"
         mc:Ignorable="d"
         Title="Démineur" Height="450" Width="800" WindowState="Maximized">
-    <Grid x:Name="GrilleXAML">
+    <Grid x:Name="GrilleXAML" KeyDown="Grid_touche_pressee" Focusable="True">
 
     </Grid>
 </Window>

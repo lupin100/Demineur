@@ -17,6 +17,8 @@ namespace Démineur
 {
     public partial class MainWindow : Window
     {
+        GrilleJeu grilleJeu;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -32,22 +34,33 @@ namespace Démineur
             {
                 GrilleXAML.Width = 320;
                 GrilleXAML.Height = 320;
-                GrilleXAML.Children.Add(new GrilleJeu(8, 8)); //on crée une grille de jeu dans la grille de la mainwindow
+                grilleJeu = new GrilleJeu(8, 8);
+                GrilleXAML.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
             }
             if (Menu.difficulte == "moyen")
             {
                 GrilleXAML.Width = 640;
                 GrilleXAML.Height = 640;
-                GrilleXAML.Children.Add(new GrilleJeu(16, 16)); //on crée une grille de jeu dans la grille de la mainwindow
+                grilleJeu = new GrilleJeu(16, 16);
+                GrilleXAML.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
             }
             if (Menu.difficulte == "difficile")
             {
                 GrilleXAML.Width = 1280;
                 GrilleXAML.Height = 640;
-                GrilleXAML.Children.Add(new GrilleJeu(16, 32)); //on crée une grille de jeu dans la grille de la mainwindow
+                grilleJeu = new GrilleJeu(16, 32);
+                GrilleXAML.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
             }
         }
-        
-        
+
+        private void Grid_touche_pressee(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.S)
+            {
+                grilleJeu.Triche();
+            }
+        }
+
+
     }
 }

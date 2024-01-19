@@ -52,7 +52,7 @@ public class GrilleJeu : Grid
         RafraichirVisuel();
     }
 
-    private void Clear()
+    public void Clear()
     {
         Initialisation(_partie.ligne, _partie.colonne);
     }
@@ -124,7 +124,8 @@ public class GrilleJeu : Grid
 
             if (_partie.Fin())
             {
-                Clear();
+                EcranFin ecranFin = new EcranFin();
+                ecranFin.ShowDialog();
             }
         }
 
@@ -182,25 +183,43 @@ public class GrilleJeu : Grid
 
     public void RafraichirVisuel(Tuile t)
     {
-        if (_partie.RecupDrapeau(t.x, t.y)) //si c'est un drapeau la case devient orange
+        if (_partie.RecupDrapeau(t.x, t.y)) //si c'est un drapeau la case affiche un drapeau
         {
-            t.Background = new SolidColorBrush(Colors.Orange);
-            //t.Content = _drapeau;
+            t.Background = Themes.drapeau;
+
+
         }
         else if (_partie.EstRevelee(t.x, t.y)) //si on a cliqué sur la tuile ou qu'elle a été révélée par ReveleEnChaine on calcule les bombes autour
         {
             int nb = _partie.CalculeNombre(t.x, t.y);
             t.Content = nb == 0 ? "" : nb.ToString();
             t.Foreground = new SolidColorBrush(Couleurs.nbCouleur[nb]);
-            t.Background = new SolidColorBrush(Couleurs.CouleurArrierePlan);
+            t.Background = new SolidColorBrush(Themes.CouleurArrierePlanGrille);
             t.FontSize = FontSize;
-            t.BorderThickness = new Thickness(2);
+            t.BorderThickness = new Thickness(1);
         }
         else //si elle est inchangée la case est bleue
         {
-            t.Background = new SolidColorBrush(Colors.CornflowerBlue);
-            t.BorderThickness = new Thickness(1);
+            t.Background = new SolidColorBrush(Themes.CouleurTuileGrille);
+            t.BorderThickness = new Thickness(2);
             t.Content = "";
+        }
+    }
+
+    internal void Triche()
+    {
+        foreach (Tuile tuile in Children)
+        {
+            if (!_partie.EstUneBombe(tuile.x,tuile.y))
+            {
+                _partie.Revele(tuile.x, tuile.y);
+                int nb = _partie.CalculeNombre(tuile.x, tuile.y);
+                tuile.Content = nb == 0 ? "" : nb.ToString();
+                tuile.Foreground = new SolidColorBrush(Couleurs.nbCouleur[nb]);
+                tuile.Background = new SolidColorBrush(Themes.CouleurArrierePlanGrille);
+                tuile.FontSize = FontSize;
+                tuile.BorderThickness = new Thickness(1);
+            }
         }
     }
 }

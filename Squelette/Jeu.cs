@@ -5,26 +5,25 @@ namespace Démineur;
 
 public class Jeu
 {
-    public int ligne { get; }
-    public int colonne { get; }
+    public int ligne;
+    public int colonne;
 
     private bool[,] _tableauDrapeaux; //on crée 3 tableaux de booléens qui feront la taille de la grille pour localiser les cases marquées, révélées et qui sont des bombes
     private bool[,] _tableauMines;
     private bool[,] _tableauRevelees;
     private readonly int _nbBombe;
-    private readonly Random _random = new Random();
-
-    public bool jeuTourne { get; private set; }
+    public readonly Random _random = new Random();
+    public bool jeuTourne;
 
     public Jeu(int _ligne, int _colonne, int nbBombe, GrilleJeu grille)
     {
         ligne = _ligne;
         colonne = _colonne;
         _nbBombe = nbBombe;
-        Rafraichissement();
+        Initialisation();
     }
     
-    public void Rafraichissement() //on calibre les tableaux pour qu'ils fassent la taille de la grille et on place les bombes aléatoirement en passant des booléens à true dans le tableau des bombes
+    public void Initialisation() //on calibre les tableaux pour qu'ils fassent la taille de la grille et on place les bombes aléatoirement en passant des booléens à true dans le tableau des bombes
     {
         _tableauDrapeaux = new bool[ligne, colonne];
         _tableauMines = new bool[ligne, colonne];
@@ -32,13 +31,23 @@ public class Jeu
         int cpt = 0;
         while (cpt < _nbBombe)
         {
-            int r = _random.Next(ligne);
-            int c = _random.Next(colonne);
-            if (!_tableauMines[r, c])
-            {            
-                    _tableauMines[r, c] = true;
-                    cpt++;
+            int x = _random.Next(ligne);
+            int y = _random.Next(colonne);
+            while (_tableauMines[x, y])
+            {
+                x++;
+                if (x >= ligne)
+                {
+                    x = 0;
+                    y++;
+                    if (y >= colonne)
+                    {
+                        y = 0;
+                    }
+                }
             }
+            _tableauMines[x, y] = true;
+            cpt++;
         }
 
         jeuTourne = true;
@@ -95,5 +104,57 @@ public class Jeu
     public bool RecupDrapeau(int x, int y) //meme principe que estunebombe
     {
         return _tableauDrapeaux[x, y];
+    }
+    
+    public void SafeZone(int tuilex, int tuiley)
+    {
+        for (int i = -1; i <= 1; i++)
+        {
+            for (int j = -1; j <= 1; j++)
+            {
+                int x = tuilex + i;
+                int y = tuiley + j;
+
+
+                if (x >= 0 && x < ligne && y >= 0 && y < colonne)
+                {
+                    if (EstUneBombe(x, y))
+                    {
+                        _tableauMines[x, y] = false;
+                        int minex = _random.Next(ligne);
+                        int miney = _random.Next(colonne);
+                        while (_tableauMines[minex,miney] || (minex > tuilex-1 && minex < tuilex+1) || (miney > tuiley-1 && miney < tuiley+1))
+                        {
+                            minex++;
+                            if (minex >= ligne)
+                            {
+                                minex = 0;
+                                miney++;
+                                if (miney >= colonne)
+                                {
+                                    miney = 0;
+                                }
+                            }
+                        }
+                        _tableauMines[minex, miney] = true;
+                    }
+                }
+            }
+        }
+    }
+
+    public bool Fin()
+    {
+        for (int i = 0; i < ligne; i++)
+        {
+            for (int j = 0; j < colonne; j++)
+            {
+                if (!EstUneBombe(i,j) && !EstRevelee(i,j))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

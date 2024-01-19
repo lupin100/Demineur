@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,11 +13,9 @@ namespace Démineur;
 
 public class GrilleJeu : Grid
 {
-    private readonly int[] PARCOURS_HORIZONTAL = {-1, 0, 1, 0};
-    private readonly int[] PARCOURS_VERTICAL = {0, -1, 0, 1};    
-    
     private Jeu _partie;
-
+    BitmapImage _drapeau = new BitmapImage(new Uri($"/Images/flag.png", UriKind.Relative));
+    bool premier_clic = true;
 
     public GrilleJeu(int ligne, int colonne)
     {
@@ -26,6 +25,7 @@ public class GrilleJeu : Grid
     private void Initialisation(int ligne, int colonne) //initialisation crée des lignes et des colonnes dans la grid et les remplit de boutons puis rafraichit leur visuel
     {
         _partie = new Jeu(ligne, colonne, ligne * colonne / 6, this);
+        premier_clic = true;
 
         RowDefinitions.Clear();
         for (int i = 0; i < ligne; i++)
@@ -67,6 +67,7 @@ public class GrilleJeu : Grid
 
         if (sender is Tuile t)
         {
+            
             if (_partie.EstRevelee(t.x, t.y))
             {
                 e.Handled = true;
@@ -92,6 +93,11 @@ public class GrilleJeu : Grid
 
         if (sender is Tuile tuile)
         {
+            if (premier_clic)
+            {
+                _partie.SafeZone(tuile.x, tuile.y);
+                premier_clic = false;
+            }
             if (_partie.RecupDrapeau(tuile.x, tuile.y))
             {
                 return;
@@ -115,11 +121,17 @@ public class GrilleJeu : Grid
             {
                 RafraichirVisuel(tuile);
             }
+
+            if (_partie.Fin())
+            {
+                Clear();
+            }
         }
 
         e.Handled = true;
     }
 
+    
     private void ReveleEnChaine(Tuile tuile) //ReveleEnChaine utilise l'algorithme du parcours en largeur (Breadth-first search en anglais)
     {
         Queue q = new Queue();
@@ -129,7 +141,7 @@ public class GrilleJeu : Grid
         {
             KeyValuePair<int, int> t = (KeyValuePair<int, int>) q.Dequeue();
 
-            foreach (int i in PARCOURS_HORIZONTAL)
+            for (int i = -1; i <= 1; i++)
             {
                 int r = t.Key + i;
                 if (r < 0 || r >= _partie.ligne)
@@ -137,7 +149,7 @@ public class GrilleJeu : Grid
                     continue;
                 }
 
-                foreach (int j in PARCOURS_VERTICAL)
+                for (int j = -1; j <= 1; j++)
                 {
                     int c = t.Value + j;
 
@@ -170,25 +182,24 @@ public class GrilleJeu : Grid
 
     public void RafraichirVisuel(Tuile t)
     {
-        if (_partie.RecupDrapeau(t.x, t.y)) //si c'est un drapeau la case affiche un drapeau
+        if (_partie.RecupDrapeau(t.x, t.y)) //si c'est un drapeau la case devient orange
         {
-            t.Background = Themes.drapeau; 
-
-  
+            t.Background = new SolidColorBrush(Colors.Orange);
+            //t.Content = _drapeau;
         }
         else if (_partie.EstRevelee(t.x, t.y)) //si on a cliqué sur la tuile ou qu'elle a été révélée par ReveleEnChaine on calcule les bombes autour
         {
             int nb = _partie.CalculeNombre(t.x, t.y);
             t.Content = nb == 0 ? "" : nb.ToString();
             t.Foreground = new SolidColorBrush(Couleurs.nbCouleur[nb]);
-            t.Background = new SolidColorBrush(Themes.CouleurArrierePlanGrille);
+            t.Background = new SolidColorBrush(Couleurs.CouleurArrierePlan);
             t.FontSize = FontSize;
-            t.BorderThickness = new Thickness(1);
+            t.BorderThickness = new Thickness(2);
         }
         else //si elle est inchangée la case est bleue
         {
-            t.Background = new SolidColorBrush(Themes.CouleurTuileGrille);
-            t.BorderThickness = new Thickness(2);
+            t.Background = new SolidColorBrush(Colors.CornflowerBlue);
+            t.BorderThickness = new Thickness(1);
             t.Content = "";
         }
     }

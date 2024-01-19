@@ -20,6 +20,10 @@ namespace Démineur
         public MainWindow()
         {
             InitializeComponent();
+
+            Theme theme = new Theme ();
+            theme.ShowDialog();
+
             Menu menu = new Menu();
             menu.ShowDialog();
             if (menu.DialogResult == false)

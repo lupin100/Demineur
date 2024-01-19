@@ -11,5 +11,4 @@ public class Couleurs //la classe ne sert qu'à accéder aux couleurs facilement
         Colors.Yellow, Colors.SaddleBrown
     };
 
-    public static Color CouleurArrierePlan { get; } = Colors.AliceBlue;
 }

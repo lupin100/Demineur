@@ -9,9 +9,9 @@
     <Grid x:Name="fondfin">
         <Label x:Name="titrefin" Content="Gagné" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="112" VerticalAlignment="Top" Width="300" Foreground="#FF2DEB12" FontSize="48" FontWeight="Bold" />
         <Label x:Name="textefin" Content="Bravo vous avez réussi&#xD;&#xA; votre mission" VerticalContentAlignment="Center"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="112" Margin="0,112,0,0" VerticalAlignment="Top" Width="300" Foreground="#FF2DEB12" FontSize="24"/>
-        <Button x:Name="termine" Content="Terminé" HorizontalAlignment="Left" Height="50" Margin="16.6,624,0,0" VerticalAlignment="Top" Width="125" Background="#00DDDDDD" Foreground="#FF2DEB12" FontSize="18" Click="termine_Click_1"/>
-        <Button x:Name="recommencer" Content="Recommencer" HorizontalAlignment="Left" Height="50" Margin="158.2,624,0,0" VerticalAlignment="Top" Width="125" Background="#00DDDDDD" Foreground="#FF2DEB12" FontSize="18" Click="recommencer_Click_1"/>
-        <Rectangle x:Name="imagefin" HorizontalAlignment="Center" Height="300" Margin="0,251,0,0" Stroke="Black" VerticalAlignment="Top" Width="300"/>
+        <Button x:Name="termine" Content="Terminé" HorizontalAlignment="Left" Height="50" Margin="11.6,600,0,0" VerticalAlignment="Top" Width="125" Background="#00DDDDDD" Foreground="#FF2DEB12" FontSize="18" Click="termine_Click_1"/>
+        <Button x:Name="recommencer" Content="Recommencer" HorizontalAlignment="Left" Height="50" Margin="148.2,600,0,0" VerticalAlignment="Top" Width="125" Background="#00DDDDDD" Foreground="#FF2DEB12" FontSize="18" Click="recommencer_Click_1"/>
+        <Rectangle x:Name="imagefin" HorizontalAlignment="Center" Height="300" Margin="0,251,0,0" VerticalAlignment="Top" Width="300"/>
 
     </Grid>
 </Window>

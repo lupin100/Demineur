@@ -23,33 +23,53 @@ namespace Démineur
         {
             InitializeComponent();
 
+            
+           
+
             Themes theme = new Themes ();
             theme.ShowDialog();
+
+            Themes.musique.Volume = 1;
+            Themes.musique.Play();
 
             Menu menu = new Menu();
             menu.ShowDialog();
             if (menu.DialogResult == false)
                 Application.Current.Shutdown();
+            GrilleXAML.Background = Themes.FondPage;
             if (Menu.difficulte == "facile")
             {
-                GrilleXAML.Width = 320;
-                GrilleXAML.Height = 320;
+                Grilledemineur.Width = 320;
+                Grilledemineur.Height = 320;
                 grilleJeu = new GrilleJeu(8, 8);
-                GrilleXAML.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
+                Grilledemineur.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
             }
             if (Menu.difficulte == "moyen")
             {
-                GrilleXAML.Width = 640;
-                GrilleXAML.Height = 640;
+                Grilledemineur.Width = 640;
+                Grilledemineur.Height = 640;
                 grilleJeu = new GrilleJeu(16, 16);
-                GrilleXAML.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
+                Grilledemineur.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
             }
             if (Menu.difficulte == "difficile")
             {
-                GrilleXAML.Width = 1280;
-                GrilleXAML.Height = 640;
+                Grilledemineur.Width = 1280;
+                Grilledemineur.Height = 640;
                 grilleJeu = new GrilleJeu(16, 32);
-                GrilleXAML.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
+                Grilledemineur.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
+            }
+            
+            grilleJeu.Background = new SolidColorBrush(Themes.CouleurFondGrille);
+        }
+
+
+        public static void Fin()
+        {
+            EcranFin ecranFin = new EcranFin();
+            ecranFin.ShowDialog();
+            if (ecranFin.DialogResult == false)
+            {
+                Application.Current.Shutdown();
             }
         }
 

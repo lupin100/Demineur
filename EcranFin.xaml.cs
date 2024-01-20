@@ -22,6 +22,19 @@ namespace Démineur
         public EcranFin()
         {
             InitializeComponent();
+            if (GrilleJeu.gagner == false)
+            {
+                titrefin.Content = "Perdu";
+                textefin.Content = Themes.TexteDefaite;
+                imagefin.Fill = Themes.ImageDefaite;
+            }
+            else
+            {
+                titrefin.Content = "Gagné";
+                textefin.Content = Themes.TexteVictoire;
+                imagefin.Fill = Themes.ImageVictoire;
+            }
+
             titrefin.Foreground = new SolidColorBrush(Themes.CouleurTitreFin);
             fondfin.Background = new SolidColorBrush(Themes.CouleurFondFin);
             textefin.Foreground = new SolidColorBrush(Themes.CouleurTexteFin);
@@ -30,7 +43,7 @@ namespace Démineur
             recommencer.BorderBrush = new SolidColorBrush(Themes.CouleurRecommencer);
             recommencer.Foreground = new SolidColorBrush(Themes.CouleurRecommencer);
 
-
+            
         }
 
         private void termine_Click_1(object sender, RoutedEventArgs e)

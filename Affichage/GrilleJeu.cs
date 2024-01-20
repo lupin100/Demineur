@@ -16,7 +16,7 @@ public class GrilleJeu : Grid
     private Jeu _partie;
     BitmapImage _drapeau = new BitmapImage(new Uri($"/Images/flag.png", UriKind.Relative));
     bool premier_clic = true;
-    bool gagner;
+    public static bool gagner;
 
     public GrilleJeu(int ligne, int colonne)
     {
@@ -107,8 +107,7 @@ public class GrilleJeu : Grid
             if (_partie.EstUneBombe(tuile.x, tuile.y))
             {
                 gagner = false;
-                EcranFin ecranFin = new EcranFin();
-                ecranFin.ShowDialog();
+                MainWindow.Fin();
                 e.Handled = true;
                 return;
             }
@@ -128,8 +127,7 @@ public class GrilleJeu : Grid
             if (_partie.Fin())
             {
                 gagner = true;
-                EcranFin ecranFin = new EcranFin();
-                ecranFin.ShowDialog();
+                MainWindow.Fin();
                 e.Handled = true;
                 return;
             }
@@ -189,6 +187,7 @@ public class GrilleJeu : Grid
 
     public void RafraichirVisuel(Tuile t)
     {
+        t.BorderBrush= new SolidColorBrush(Themes.CouleurBordTuile);
         if (_partie.RecupDrapeau(t.x, t.y)) //si c'est un drapeau la case affiche un drapeau
         {
             t.Background = Themes.drapeau;

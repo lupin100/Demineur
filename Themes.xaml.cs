@@ -62,6 +62,37 @@ namespace Démineur
         private void far_west_Click(object sender, RoutedEventArgs e)
         {
             musique.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Musiques/far west.mp3"));
+            //Changement de couleur du menu
+            CouleurFondMenu = Colors.Moccasin;
+            CouleurTitreMenu = Colors.SaddleBrown;
+            CouleurTexteMenu = Colors.SaddleBrown;
+            CouleurFacileMenu = Colors.Green;
+            CouleurMoyenMenu = Colors.Orange;
+            CouleurDifficileMenu = Colors.Red;
+            CouleurJouerMenu = Colors.SaddleBrown;
+            CouleurAnnulerMenu = Colors.SaddleBrown;
+            ImageDroite.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/chapeau.png"));
+            ImageGauche.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/wanted.png"));
+
+            //Changement de style de la grille
+            CouleurArrierePlanGrille = Colors.Bisque;
+            CouleurTuileGrille = Colors.Moccasin;
+            CouleurBordTuile = Colors.SaddleBrown;
+            CouleurFondGrille = Colors.Moccasin;
+            FondPage.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/far west.jpg"));
+            drapeau.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/etoile.png"));
+
+            //changement de style du menu final
+            CouleurFondFin = Colors.Moccasin;
+            CouleurTitreFin = Colors.SaddleBrown;
+            CouleurTexteFin = Colors.SaddleBrown;
+            CouleurTermine = Colors.SaddleBrown;
+            CouleurRecommencer = Colors.SaddleBrown;
+            TexteDefaite = "Le desperados court \n toujours !";
+            TexteVictoire = "Vous avez mis ce \n desperados en prison !";
+            ImageDefaite.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/desperados.png"));
+            ImageVictoire.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/prison.png"));
+
 
         }
 
@@ -140,11 +171,73 @@ namespace Démineur
         private void nature_Click(object sender, RoutedEventArgs e)
         {
             musique.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Musiques/nature.mp3"));
+
+            //Changement de couleur du menu
+            CouleurFondMenu = Colors.SeaGreen;
+            CouleurTitreMenu = Colors.SaddleBrown;
+            CouleurTexteMenu = Colors.SaddleBrown;
+            CouleurFacileMenu = Colors.LawnGreen;
+            CouleurMoyenMenu = Colors.Orange;
+            CouleurDifficileMenu = Colors.Red;
+            CouleurJouerMenu = Colors.SaddleBrown;
+            CouleurAnnulerMenu = Colors.SaddleBrown;
+            ImageDroite.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/cerf.png"));
+            ImageGauche.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/fusil.png"));
+
+            //Changement de style de la grille
+            CouleurArrierePlanGrille = Colors.MediumSeaGreen;
+            CouleurTuileGrille = Colors.SeaGreen;
+            CouleurBordTuile = Colors.SaddleBrown;
+            CouleurFondGrille = Colors.SeaGreen;
+            FondPage.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/foret.jpg"));
+            drapeau.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/arbre.png"));
+
+            //changement de style du menu final
+            CouleurFondFin = Colors.SeaGreen;
+            CouleurTitreFin = Colors.SaddleBrown;
+            CouleurTexteFin = Colors.SaddleBrown;
+            CouleurTermine = Colors.SaddleBrown;
+            CouleurRecommencer = Colors.SaddleBrown;
+            TexteDefaite = "Vous avez fini à\n la charcuterie";
+            TexteVictoire = "Vous avez retrouvé\n votre famille !";
+            ImageDefaite.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/viande.png"));
+            ImageVictoire.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/famillecerf.png"));
         }
 
         private void espace_Click(object sender, RoutedEventArgs e)
         {
             musique.Open(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Musiques/espace.mp3"));
+
+            //Changement de couleur du menu
+            CouleurFondMenu = Colors.Black;
+            CouleurTitreMenu = Colors.Lime;
+            CouleurTexteMenu = Colors.Lime;
+            CouleurFacileMenu = Colors.LawnGreen;
+            CouleurMoyenMenu = Colors.Orange;
+            CouleurDifficileMenu = Colors.Red;
+            CouleurJouerMenu = Colors.Lime;
+            CouleurAnnulerMenu = Colors.Lime;
+            ImageDroite.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/fusée.png"));
+            ImageGauche.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/soucoupe.png"));
+
+            //Changement de style de la grille
+            CouleurArrierePlanGrille = Colors.DarkSlateGray;
+            CouleurTuileGrille = Colors.Black;
+            CouleurBordTuile = Colors.Lime;
+            CouleurFondGrille = Colors.Black;
+            FondPage.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/espace.jpg"));
+            drapeau.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/satellite.png"));
+
+            //changement de style du menu final
+            CouleurFondFin = Colors.Black;
+            CouleurTitreFin = Colors.Lime;
+            CouleurTexteFin = Colors.Lime;
+            CouleurTermine = Colors.Lime;
+            CouleurRecommencer = Colors.Lime;
+            TexteDefaite = "Les aliens vous\n ont capturé";
+            TexteVictoire = "Vous allez rentrer\n sur Terre !";
+            ImageDefaite.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/alien.png"));
+            ImageVictoire.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/astronaute.png"));
         }
 
         private void continuer_Click_1(object sender, RoutedEventArgs e)

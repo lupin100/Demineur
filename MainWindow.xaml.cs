@@ -29,7 +29,7 @@ namespace Démineur
             Themes theme = new Themes ();
             theme.ShowDialog();
 
-            Themes.musique.Volume = 1;
+            Themes.musique.Volume = 0.5;
             Themes.musique.Play();
 
             Menu menu = new Menu();

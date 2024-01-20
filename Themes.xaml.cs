@@ -23,8 +23,33 @@ namespace Démineur
         public Themes()
         {
             InitializeComponent();
+
+            themefond.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory+"Images/arc en ciel.jpg"));
+            fondtheme.Background = themefond;
+
+            boutonfarwest.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/theme far west.png"));
+            far_west.Background = boutonfarwest;
+
+            boutondemineur.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/theme demineur.png"));
+            retro.Background = boutondemineur;
+
+            boutonmoyenage.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/theme moyen age.png"));
+            moyen_age.Background = boutonmoyenage;
+
+            boutonnature.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/theme nature.png"));
+            nature.Background = boutonnature;
+
+            boutonespace.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/theme espace.png"));
+            espace.Background = boutonespace;
         }
         public static MediaPlayer musique = new MediaPlayer();
+
+        public static ImageBrush themefond = new ImageBrush();
+        public static ImageBrush boutonfarwest = new ImageBrush();
+        public static ImageBrush boutondemineur = new ImageBrush();
+        public static ImageBrush boutonmoyenage = new ImageBrush();
+        public static ImageBrush boutonnature = new ImageBrush();
+        public static ImageBrush boutonespace = new ImageBrush();
 
 
         public static Color CouleurFondMenu = new Color();
@@ -55,6 +80,8 @@ namespace Démineur
         public static string TexteDefaite;
         public static ImageBrush ImageDefaite = new ImageBrush();
         public static ImageBrush ImageVictoire = new ImageBrush();
+
+        
 
 
         //https://sebastien.warin.fr/2006/10/21/68-wpf-mediaelement/

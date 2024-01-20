@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:Démineur"
         mc:Ignorable="d"
         Title="Themes" Height="800" Width="800">
-    <Grid Background="White">
+    <Grid x:Name="fondtheme" Background="White">
         <Label Content="Thème" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="800" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" FontSize="36"/>
-        <Button x:Name="far_west" HorizontalAlignment="Left" Height="150" Margin="87.5,200,0,0" VerticalAlignment="Top" Width="150" Background="#FFDDDDDD" Click="far_west_Click"/>
-        <Button x:Name="retro" Content="" HorizontalAlignment="left" Height="150" Margin="325,200,0,0" VerticalAlignment="Top" Width="150" Background="#FFDDDDDD" Click="retro_Click"/>
+        <Button x:Name="far_west" HorizontalAlignment="Left" Height="150" Margin="87.5,200,0,0" VerticalAlignment="Top" Width="150" Background="White" Click="far_west_Click" BorderBrush="{x:Null}" Foreground="#FFC35555"/>
+        <Button x:Name="retro" Content="" HorizontalAlignment="left" Height="150" Margin="325,200,0,0" VerticalAlignment="Top" Width="150" Background="#FFDDDDDD" Click="retro_Click" BorderBrush="{x:Null}"/>
         <Button x:Name="nature" Content="" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150" Background="#FFDDDDDD" Margin="116.6,500,0,0" Click="nature_Click"/>
-        <Button x:Name="moyen_age" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150" Background="#FFDDDDDD" Margin="562.5,200,0,0" Click="moyen_age_Click"/>
+        <Button x:Name="moyen_age" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150" Background="#FFDDDDDD" Margin="562.5,200,0,0" Click="moyen_age_Click" BorderBrush="{x:Null}"/>
         <Button x:Name="espace" Content="" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="150" Background="#FFDDDDDD" Margin="483.2,500,0,0" Click="espace_Click"/>
         <Label Content="Retro" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" Width="150" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>
         <Label Content="Moyen Age" HorizontalAlignment="Left" Margin="562,160,0,0" VerticalAlignment="Top" Width="150" Height="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18"/>

@@ -106,7 +106,7 @@ public class Jeu
         return _tableauDrapeaux[x, y];
     }
     
-    public void SafeZone(int tuilex, int tuiley)
+    public void Securite(int tuilex, int tuiley)
     {
         for (int i = -1; i <= 1; i++)
         {

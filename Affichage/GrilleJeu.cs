@@ -13,6 +13,11 @@ namespace Démineur;
 
 public class GrilleJeu : Grid
 {
+    public readonly int TAILLE_CARACTERE = 20;
+    public readonly int EPAISSEUR_BORDURE_NON_REVELEE = 2;
+    public readonly int EPAISSEUR_BORDURE_REVELEE = 1;
+
+    
     private Jeu _partie;
     BitmapImage _drapeau = new BitmapImage(new Uri($"/Images/flag.png", UriKind.Relative));
     bool premier_clic = true;
@@ -96,7 +101,7 @@ public class GrilleJeu : Grid
         {
             if (premier_clic)
             {
-                _partie.SafeZone(tuile.x, tuile.y);
+                _partie.Securite(tuile.x, tuile.y);
                 premier_clic = false;
             }
             if (_partie.RecupDrapeau(tuile.x, tuile.y))
@@ -182,9 +187,7 @@ public class GrilleJeu : Grid
             RafraichirVisuel(tuile);
         }
     }
-
-    public int FontSize { get; } = 20;
-
+    
     public void RafraichirVisuel(Tuile t)
     {
         t.BorderBrush= new SolidColorBrush(Themes.CouleurBordTuile);
@@ -200,13 +203,13 @@ public class GrilleJeu : Grid
             t.Content = nb == 0 ? "" : nb.ToString();
             t.Foreground = new SolidColorBrush(Couleurs.nbCouleur[nb]);
             t.Background = new SolidColorBrush(Themes.CouleurArrierePlanGrille);
-            t.FontSize = FontSize;
-            t.BorderThickness = new Thickness(1);
+            t.FontSize = TAILLE_CARACTERE;
+            t.BorderThickness = new Thickness(EPAISSEUR_BORDURE_REVELEE);
         }
         else //si elle est inchangée la case est bleue
         {
             t.Background = new SolidColorBrush(Themes.CouleurTuileGrille);
-            t.BorderThickness = new Thickness(2);
+            t.BorderThickness = new Thickness(EPAISSEUR_BORDURE_NON_REVELEE);
             t.Content = "";
         }
     }
@@ -222,8 +225,8 @@ public class GrilleJeu : Grid
                 tuile.Content = nb == 0 ? "" : nb.ToString();
                 tuile.Foreground = new SolidColorBrush(Couleurs.nbCouleur[nb]);
                 tuile.Background = new SolidColorBrush(Themes.CouleurArrierePlanGrille);
-                tuile.FontSize = FontSize;
-                tuile.BorderThickness = new Thickness(1);
+                tuile.FontSize = TAILLE_CARACTERE;
+                tuile.BorderThickness = new Thickness(EPAISSEUR_BORDURE_REVELEE);
             }
         }
     }

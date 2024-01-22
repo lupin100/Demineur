@@ -31,7 +31,7 @@ namespace Démineur
             
         }
 
-        public  void Demineur()
+        public void Demineur()
         {
             Menu menu = new Menu();
             menu.ShowDialog();
@@ -65,24 +65,6 @@ namespace Démineur
             }
 
             grilleJeu.Background = new SolidColorBrush(Themes.CouleurFondGrille);
-        }
-
-        public static void Fin()
-        {
-            
-            EcranFin ecranFin = new EcranFin();
-            ecranFin.ShowDialog();
-            if (ecranFin.DialogResult == false)
-            {
-                Application.Current.Shutdown();
-
-            }
-            if(ecranFin.DialogResult == true)
-            {
-                Demineur();
-                
-            }
-
         }
 
 

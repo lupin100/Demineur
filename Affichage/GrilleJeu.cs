@@ -107,7 +107,7 @@ public class GrilleJeu : Grid
             if (_partie.EstUneBombe(tuile.x, tuile.y))
             {
                 gagner = false;
-                MainWindow.Fin();
+                EcranFin();
                 e.Handled = true;
                 return;
             }
@@ -127,7 +127,7 @@ public class GrilleJeu : Grid
             if (_partie.Fin())
             {
                 gagner = true;
-                MainWindow.Fin();
+                EcranFin();
                 e.Handled = true;
                 return;
             }
@@ -226,5 +226,23 @@ public class GrilleJeu : Grid
                 tuile.BorderThickness = new Thickness(1);
             }
         }
+    }
+    
+    public void EcranFin()
+    {
+            
+        EcranFin ecranFin = new EcranFin();
+        ecranFin.ShowDialog();
+        if (ecranFin.DialogResult == false)
+        {
+            Application.Current.Shutdown();
+
+        }
+        if(ecranFin.DialogResult == true)
+        {
+            Clear();
+                
+        }
+
     }
 }

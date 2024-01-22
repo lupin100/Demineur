@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,19 +24,23 @@ namespace Démineur
         {
             InitializeComponent();
 
-            
-           
-
             Themes theme = new Themes ();
             theme.ShowDialog();
 
-            Themes.musique.Volume = 0.5;
-            Themes.musique.Play();
+            Demineur();
+            
+        }
 
+        public  void Demineur()
+        {
             Menu menu = new Menu();
             menu.ShowDialog();
             if (menu.DialogResult == false)
                 Application.Current.Shutdown();
+
+            Themes.musique.Volume = 0.5;
+            Themes.musique.Play();
+
             GrilleXAML.Background = Themes.FondPage;
             if (Menu.difficulte == "facile")
             {
@@ -58,20 +63,28 @@ namespace Démineur
                 grilleJeu = new GrilleJeu(16, 32);
                 Grilledemineur.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
             }
-            
+
             grilleJeu.Background = new SolidColorBrush(Themes.CouleurFondGrille);
         }
 
-
         public static void Fin()
         {
+            
             EcranFin ecranFin = new EcranFin();
             ecranFin.ShowDialog();
             if (ecranFin.DialogResult == false)
             {
                 Application.Current.Shutdown();
+
             }
+            if(ecranFin.DialogResult == true)
+            {
+                Demineur();
+                
+            }
+
         }
+
 
         private void Grid_touche_pressee(object sender, KeyEventArgs e)
         {

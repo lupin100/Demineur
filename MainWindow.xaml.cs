@@ -21,6 +21,18 @@ namespace Démineur
         public static readonly string FACILE = "facile";
         public static readonly string MOYEN = "moyen";
         public static readonly string DIFFICILE = "difficile";
+        public static readonly int MINIMUMLARGEUR = 8;
+        public static readonly int MAXIMUMLARGEUR = 16;
+        public static readonly int MINIMUMLONGUEUR = 8;
+        public static readonly int MOYENLONGUEUR = 16;
+        public static readonly int MAXIMUMLONGUEUR = 32;
+        public static readonly int MINIMUMHAUTEURGRILLE = 320;
+        public static readonly int MAXIMUMHAUTEURGRILLE = 640;
+        public static readonly int MINIMUMLONGUEURGRILLE = 320;
+        public static readonly int MOYENLONGUEURGRILLE = 640;
+        public static readonly int MAXIMUMLONGUEURGRILLE = 1280;
+
+
 
         GrilleJeu grilleJeu;
         
@@ -48,23 +60,23 @@ namespace Démineur
             GrilleXAML.Background = Themes.FondPage;
             if (Menu.difficulte == FACILE)
             {
-                Grilledemineur.Width = 320;
-                Grilledemineur.Height = 320;
-                grilleJeu = new GrilleJeu(8, 8);
+                Grilledemineur.Width = MINIMUMLONGUEURGRILLE;
+                Grilledemineur.Height = MINIMUMHAUTEURGRILLE;
+                grilleJeu = new GrilleJeu(MINIMUMLARGEUR, MINIMUMLONGUEUR);
                 Grilledemineur.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
             }
             if (Menu.difficulte == MOYEN)
             {
-                Grilledemineur.Width = 640;
-                Grilledemineur.Height = 640;
-                grilleJeu = new GrilleJeu(16, 16);
+                Grilledemineur.Width =MOYENLONGUEURGRILLE;
+                Grilledemineur.Height = MAXIMUMHAUTEURGRILLE;
+                grilleJeu = new GrilleJeu(MAXIMUMLARGEUR, MOYENLONGUEUR);
                 Grilledemineur.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
             }
             if (Menu.difficulte == DIFFICILE)
             {
-                Grilledemineur.Width = 1280;
-                Grilledemineur.Height = 640;
-                grilleJeu = new GrilleJeu(16, 32);
+                Grilledemineur.Width = MAXIMUMLONGUEURGRILLE;
+                Grilledemineur.Height = MAXIMUMHAUTEURGRILLE;
+                grilleJeu = new GrilleJeu(MAXIMUMLARGEUR, MAXIMUMLONGUEUR);
                 Grilledemineur.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
             }
 

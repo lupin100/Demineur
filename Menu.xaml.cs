@@ -21,6 +21,7 @@ namespace Démineur
     {
         public Menu()
         {
+            InitializeComponent();
             menufond.Background = new SolidColorBrush (Themes.CouleurFondMenu);
             titremenu.Foreground = new SolidColorBrush(Themes.CouleurTitreMenu);
             textemenu.Foreground = new SolidColorBrush(Themes.CouleurTexteMenu);

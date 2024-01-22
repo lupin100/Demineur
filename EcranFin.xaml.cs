@@ -19,18 +19,21 @@ namespace Démineur
     /// </summary>
     public partial class EcranFin : Window
     {
+        public static readonly string TEXTEGAGNE = "Gagné";
+        public static readonly string TEXTEPERDU = "Perdu";
+
         public EcranFin()
         {
             InitializeComponent();
             if (GrilleJeu.gagner == false)
             {
-                titrefin.Content = "Perdu";
+                titrefin.Content = TEXTEPERDU;
                 textefin.Content = Themes.TexteDefaite;
                 imagefin.Fill = Themes.ImageDefaite;
             }
             else
             {
-                titrefin.Content = "Gagné";
+                titrefin.Content = TEXTEGAGNE;
                 textefin.Content = Themes.TexteVictoire;
                 imagefin.Fill = Themes.ImageVictoire;
             }

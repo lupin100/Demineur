@@ -21,7 +21,6 @@ namespace Démineur
     {
         public Menu()
         {
-            InitializeComponent();
             menufond.Background = new SolidColorBrush (Themes.CouleurFondMenu);
             titremenu.Foreground = new SolidColorBrush(Themes.CouleurTitreMenu);
             textemenu.Foreground = new SolidColorBrush(Themes.CouleurTexteMenu);
@@ -49,22 +48,22 @@ namespace Démineur
             this.DialogResult = true;
         }
 
-        public static string difficulte = "facile";
+        public static string difficulte = MainWindow.FACILE;
 
         private void facile_Click(object sender, RoutedEventArgs e)
         {
-            difficulte = "facile";
+            difficulte = MainWindow.FACILE;
         }
 
 
         private void difficile_Click(object sender, RoutedEventArgs e)
         {
-            difficulte = "difficile";
+            difficulte = MainWindow.DIFFICILE;
         }
 
         private void moyen_Click(object sender, RoutedEventArgs e)
         {
-            difficulte = "moyen";
+            difficulte = MainWindow.MOYEN;
         }
     }
 }

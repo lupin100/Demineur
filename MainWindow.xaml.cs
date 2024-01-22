@@ -18,6 +18,10 @@ namespace Démineur
 {
     public partial class MainWindow : Window
     {
+        public static readonly string FACILE = "facile";
+        public static readonly string MOYEN = "moyen";
+        public static readonly string DIFFICILE = "difficile";
+
         GrilleJeu grilleJeu;
         
         public MainWindow()
@@ -42,21 +46,21 @@ namespace Démineur
             Themes.musique.Play();
 
             GrilleXAML.Background = Themes.FondPage;
-            if (Menu.difficulte == "facile")
+            if (Menu.difficulte == FACILE)
             {
                 Grilledemineur.Width = 320;
                 Grilledemineur.Height = 320;
                 grilleJeu = new GrilleJeu(8, 8);
                 Grilledemineur.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
             }
-            if (Menu.difficulte == "moyen")
+            if (Menu.difficulte == MOYEN)
             {
                 Grilledemineur.Width = 640;
                 Grilledemineur.Height = 640;
                 grilleJeu = new GrilleJeu(16, 16);
                 Grilledemineur.Children.Add(grilleJeu); //on crée une grille de jeu dans la grille de la mainwindow
             }
-            if (Menu.difficulte == "difficile")
+            if (Menu.difficulte == DIFFICILE)
             {
                 Grilledemineur.Width = 1280;
                 Grilledemineur.Height = 640;

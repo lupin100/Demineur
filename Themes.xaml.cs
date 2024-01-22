@@ -42,6 +42,9 @@ namespace Démineur
             boutonespace.ImageSource = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "Images/theme espace.png"));
             espace.Background = boutonespace;
         }
+
+
+
         public static MediaPlayer musique = new MediaPlayer();
 
         public static ImageBrush themefond = new ImageBrush();

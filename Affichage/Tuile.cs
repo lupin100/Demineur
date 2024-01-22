@@ -6,8 +6,8 @@ namespace Démineur;
 public class Tuile : Button //c'est un héritage en gros on crée la classe tuile qui hérite des méthodes de la classe button
 {
 
-    public int x { get; }
-    public int y { get; }
+    public int x;
+    public int y;
 
     public Tuile(int _x, int _y, GrilleJeu grilleDeJeu)
     {

@@ -19,7 +19,6 @@ public class GrilleJeu : Grid
 
     
     private Jeu _partie;
-    BitmapImage _drapeau = new BitmapImage(new Uri($"/Images/flag.png", UriKind.Relative));
     bool premier_clic = true;
     public static bool gagner;
 
@@ -65,7 +64,7 @@ public class GrilleJeu : Grid
 
     public void Tuile_Click_Droit(object sender, MouseButtonEventArgs e)
     {
-        if (!_partie.jeuTourne) //utile pour rendre le jeu inutilisable lors que l'écran de fin apparait par exemple
+        if (!_partie.jeuTourne)
         {
             e.Handled = true;
             return;
@@ -91,7 +90,7 @@ public class GrilleJeu : Grid
 
     public void Tuile_Click_Gauche(object sender, RoutedEventArgs e)
     {
-        if (!_partie.jeuTourne) //utile pour rendre le jeu inutilisable lors que l'écran de fin apparait par exemple
+        if (!_partie.jeuTourne)
         {
             e.Handled = true;
             return;
